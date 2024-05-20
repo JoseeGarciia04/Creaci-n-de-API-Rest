@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos de API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Base de Datos de API</h1>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos serán agregados aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Ejemplo de datos simulados
+        const data = [
+            { id: 1, nombre: "Juan Perez", email: "juan.perez@example.com" },
+            { id: 2, nombre: "Ana Gomez", email: "ana.gomez@example.com" },
+            { id: 3, nombre: "Luis Martinez", email: "luis.martinez@example.com" }
+        ];
+
+        // Función para cargar datos en la tabla
+        function loadTableData(items) {
+            const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = "";
+
+            items.forEach(item => {
+                let row = tableBody.insertRow();
+                let idCell = row.insertCell(0);
+                let nameCell = row.insertCell(1);
+                let emailCell = row.insertCell(2);
+
+                idCell.innerHTML = item.id;
+                nameCell.innerHTML = item.nombre;
+                emailCell.innerHTML = item.email;
+            });
+        }
+
+        // Cargar datos simulados en la tabla al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTableData(data);
+        });
+    </script>
+</body>
+</html>
